@@ -1,4 +1,3 @@
-import moment from 'moment'
 
 const expensesReducer = (state = [], action) => {
   switch (action.type) {

@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import './index.module.scss'
 import App from './App/App'
 import { configureStore } from './redux/store/configureStore'
-import { addExpense } from './redux/actions/expenses'
 import { Provider } from 'react-redux'
 
 import * as serviceWorker from './serviceWorker'

@@ -6,8 +6,7 @@ class App extends Component {
   render() {
     return (
       <div className={styles.App}>
-        <AppRouter>
-        </AppRouter>
+        <AppRouter />
       </div>
     )
   }
