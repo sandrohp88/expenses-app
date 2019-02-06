@@ -1,5 +1,5 @@
 import moment from 'moment'
-export default [
+const expenses = [
   {
     id: '1',
     description: 'Gum',
@@ -26,3 +26,7 @@ export default [
       .valueOf()
   }
 ]
+
+// Total amount
+const totalAmount = expenses.reduce((acc, current) => acc + current.amount, 0)
+export { totalAmount, expenses as default }
