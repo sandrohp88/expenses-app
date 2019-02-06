@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render ExpenseItem 1`] = `
+<div>
+  <li>
+    <Link
+      replace={false}
+      to="edit/1"
+    >
+      <h3>
+        Gum
+      </h3>
+    </Link>
+    <p>
+      195
+       - 
+      Dec 31st 69
+    </p>
+  </li>
+</div>
+`;
