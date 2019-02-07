@@ -6,6 +6,7 @@ exports[`render Dashboard without crash 1`] = `
     Dashboard
   </h1>
   <Connect(ExpensesFilterInput) />
+  <Connect(ExpensesSummary) />
   <Connect(ExpenseList) />
 </div>
 `;

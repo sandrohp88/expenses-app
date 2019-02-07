@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render without crash 1`] = `
+<div>
+  <h2>
+    Viewing 
+    3
+     
+    expenses
+     
+    totaling 
+    $1,141.95
+  </h2>
+</div>
+`;
