@@ -28,9 +28,7 @@ const removeExpense = (id = '') => ({ type: 'REMOVE_EXPENSE', id })
 const removeExpenseAsync = (id = '') => {
   return async dispacth => {
     try {
-      const response = await expensesRef
-        .doc(id)
-        .delete()
+      const response = await expensesRef.doc(id).delete()
       return dispacth(removeExpense(id))
     } catch (error) {
       console.log('Delete Error', error)
@@ -40,6 +38,15 @@ const removeExpenseAsync = (id = '') => {
 
 // EDIT_EXPENSE
 const editExpense = (id, updates) => ({ type: 'EDIT_EXPENSE', id, updates })
+// EDIT_EXPENSE_ASYNC
+const editExpenseAsync = (id, updates) => {
+  return async dispatch => {
+    const response = await expensesRef.doc(id).update(updates)
+    if (response) {
+      return dispatch(editExpense(id, updates))
+    }
+  }
+}
 
 // SET_EXPENSES
 const setExpenses = expenses => ({ type: 'SET_EXPENSES', expenses })
@@ -69,5 +76,6 @@ export {
   removeExpense,
   removeExpenseAsync,
   editExpense,
+  editExpenseAsync,
   setExpenses
 }

@@ -1,11 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { ExpenseForm } from '../ExpenseForm/ExpenseForm'
-import { editExpense, removeExpenseAsync } from '../../redux/actions/expenses'
+import {
+  editExpenseAsync,
+  removeExpenseAsync
+} from '../../redux/actions/expenses'
 
 export class EditExpense extends React.Component {
   onSubmit = expense => {
-    this.props.editExpense(this.props.expense.id, expense)
+    this.props.editExpenseAsync(this.props.expense.id, expense)
     this.props.history.push('/')
   }
 
@@ -32,7 +35,7 @@ const mapStateToProps = (state, props) => {
 }
 const mapDispatchToProps = dispatch => ({
   removeExpenseAsync: id => dispatch(removeExpenseAsync(id)),
-  editExpense: (id, updates) => dispatch(editExpense(id, updates))
+  editExpenseAsync: (id, updates) => dispatch(editExpenseAsync(id, updates))
 })
 export default connect(
   mapStateToProps,
