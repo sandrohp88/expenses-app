@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { ExpenseForm } from '../ExpenseForm/ExpenseForm'
-import { addExpense } from '../../redux/actions/expenses'
+import { addExpenseAsync } from '../../redux/actions/expenses'
 export class AddExpense extends React.Component {
   onSubmit = expense => {
-    this.props.addExpense(expense)
+    this.props.addExpenseAsync(expense)
     this.props.history.push('/')
   }
   render() {
@@ -17,7 +17,7 @@ export class AddExpense extends React.Component {
   }
 }
 const mapDispatchToProps = dispatch => ({
-  addExpense: expense => dispatch(addExpense(expense))
+  addExpenseAsync: expense => dispatch(addExpenseAsync(expense))
 })
 export default connect(
   undefined,
