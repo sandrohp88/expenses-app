@@ -6,7 +6,7 @@ const addExpense = expense => ({
 })
 
 // ADD_EXPENSE_ASYNC
-const addExpenseAsync =  (expenseData = {}) => {
+const addExpenseAsync = (expenseData = {}) => {
   return async dispatch => {
     const {
       description = '',
@@ -26,4 +26,32 @@ const removeExpense = (id = '') => ({ type: 'REMOVE_EXPENSE', id })
 // EDIT_EXPENSE
 const editExpense = (id, updates) => ({ type: 'EDIT_EXPENSE', id, updates })
 
-export { addExpense, addExpenseAsync, removeExpense, editExpense }
+// SET_EXPENSES
+const setExpenses = expenses => ({ type: 'SET_EXPENSES', expenses })
+
+// GET_EXPENSES_ASYNC
+const getExpensesAsync = () => {
+  return async dispatch => {
+    const response = await expensesRef.get()
+    const expenses = []
+    response.forEach(expense => {
+      const {
+        description = '',
+        note = '',
+        amount = 0,
+        createdAt = 0
+      } = expense.data()
+      expenses.push({id:expense.id, description, note, amount, createdAt })
+    })
+    return dispatch(setExpenses(expenses))
+  }
+}
+
+export {
+  getExpensesAsync,
+  addExpense,
+  addExpenseAsync,
+  removeExpense,
+  editExpense,
+  setExpenses
+}

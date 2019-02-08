@@ -2,7 +2,8 @@ import {
   addExpense,
   removeExpense,
   editExpense,
-  addExpenseAsync
+  addExpenseAsync,
+  setExpenses
 } from '../../redux/actions/expenses'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
@@ -10,6 +11,8 @@ import AddExpense from '../../components/AddExpense/AddExpense'
 import expenses from '../../sampleData/expenses'
 
 const createMockStore = configureMockStore([thunk])
+
+beforeEach(async () => {})
 test('Remove Expense action', () => {
   const actual = removeExpense('123abc')
   expect(actual).toEqual({ type: 'REMOVE_EXPENSE', id: '123abc' })
@@ -61,6 +64,11 @@ it('add addExpense to database and store', async () => {
     }
   })
 })
+
+it('set up expenses with data', () => {
+  const actual = setExpenses(expenses)
+  expect(actual).toEqual({ type: 'SET_EXPENSES', expenses })
+})
 // test('Add expense without values', () => {
 //   const actual = addExpense()
 //   expect(actual).toEqual({
@@ -74,3 +82,4 @@ it('add addExpense to database and store', async () => {
 //     }
 //   })
 // })
+
