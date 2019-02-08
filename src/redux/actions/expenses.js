@@ -23,6 +23,21 @@ const addExpenseAsync = (expenseData = {}) => {
 // REMOVE_EXPENSE
 const removeExpense = (id = '') => ({ type: 'REMOVE_EXPENSE', id })
 
+// REMOVE_EXPENSE_ASYNC
+
+const removeExpenseAsync = (id = '') => {
+  return async dispacth => {
+    try {
+      const response = await expensesRef
+        .doc(id)
+        .delete()
+      return dispacth(removeExpense(id))
+    } catch (error) {
+      console.log('Delete Error', error)
+    }
+  }
+}
+
 // EDIT_EXPENSE
 const editExpense = (id, updates) => ({ type: 'EDIT_EXPENSE', id, updates })
 
@@ -41,7 +56,7 @@ const getExpensesAsync = () => {
         amount = 0,
         createdAt = 0
       } = expense.data()
-      expenses.push({id:expense.id, description, note, amount, createdAt })
+      expenses.push({ id: expense.id, description, note, amount, createdAt })
     })
     return dispatch(setExpenses(expenses))
   }
@@ -52,6 +67,7 @@ export {
   addExpense,
   addExpenseAsync,
   removeExpense,
+  removeExpenseAsync,
   editExpense,
   setExpenses
 }
