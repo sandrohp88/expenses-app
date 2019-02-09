@@ -1,5 +1,4 @@
 import firebase from 'firebase'
-import expenses from '../sampleData/expenses'
 // Initialize Firebase
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -10,10 +9,10 @@ const config = {
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID
 }
 firebase.initializeApp(config)
-const expensesRef = firebase
-  .firestore()
-  .collection('users/l6MX8XJ3w9sIffcszPNR/expenses')
+// const expensesRef = firebase
+//   .firestore()
+//   .collection('users/l6MX8XJ3w9sIffcszPNR/expenses')
 
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
 
-export { googleAuthProvider, firebase, expensesRef as default }
+export { googleAuthProvider, firebase }

@@ -5,9 +5,7 @@ import { connect } from 'react-redux'
 export const Header = ({ signOutAsync }) => (
   <header>
     <h1>Expenses</h1>
-    <NavLink to="/dashboard" exact={true}>
-      Dashboard
-    </NavLink>
+    <NavLink to="/dashboard">Dashboard</NavLink>
     <NavLink to="/create">Create Expense</NavLink>
     <NavLink to="/help">Help</NavLink>
     <button onClick={signOutAsync}>Sign Out</button>

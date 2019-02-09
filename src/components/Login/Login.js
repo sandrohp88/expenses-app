@@ -4,11 +4,12 @@ import { connect } from 'react-redux'
 import { signInAsync } from '../../redux/actions/auth'
 
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
+
 export const Login = params => {
   
   // FirebaseUI config.
   var uiConfig = {
-    signInSuccessUrl: 'dashboard',
+    // signInSuccessUrl: 'dashboard',
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID
     ],

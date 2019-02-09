@@ -7,21 +7,21 @@ import {
 } from '../../redux/actions/expenses'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import AddExpense from '../../components/AddExpense/AddExpense'
+// import AddExpense from '../../components/AddExpense/AddExpense'
 import expenses from '../../sampleData/expenses'
 import { expensesRef } from '../../firebase/firebase'
 const createMockStore = configureMockStore([thunk])
 
-beforeEach(async () => {
-  console.log(expensesRef)
-  const response = await expensesRef.get()
-  const deleteAsync = await response.forEach(ex => ex.delete())
-  if (deleteAsync) {
-    expenses.forEach(async exp => {
-      await expensesRef.add(exp)
-    })
-  }
-})
+// beforeEach(async () => {
+//   console.log(expensesRef)
+//   const response = await expensesRef.get()
+//   const deleteAsync = await response.forEach(ex => ex.delete())
+//   if (deleteAsync) {
+//     expenses.forEach(async exp => {
+//       await expensesRef.add(exp)
+//     })
+//   }
+// })
 xit('Remove Expense action', () => {
   const actual = removeExpense('123abc')
   expect(actual).toEqual({ type: 'REMOVE_EXPENSE', id: '123abc' })

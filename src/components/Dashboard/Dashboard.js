@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from '../../components/Header/Header'
 import ExpenseList from '../ExpenseList/ExpenseList'
 import ExpensesFilterInput from '../ExpensesFilterInput/ExpensesFilterInput'
 import ExpensesSummary from '../ExpensesSummary/ExpensesSummary'

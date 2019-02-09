@@ -1,4 +1,4 @@
-import expensesRef from '../../firebase/firebase'
+import { firebase } from '../../firebase/firebase'
 // ADD_EXPENSE
 const addExpense = expense => ({
   type: 'ADD_EXPENSE',
@@ -7,7 +7,8 @@ const addExpense = expense => ({
 
 // ADD_EXPENSE_ASYNC
 const addExpenseAsync = (expenseData = {}) => {
-  return async dispatch => {
+  return async (dispatch, getState) => {
+    const uid = getState().logged.uid
     const {
       description = '',
       note = '',
@@ -15,7 +16,10 @@ const addExpenseAsync = (expenseData = {}) => {
       createdAt = 0
     } = expenseData
     const expense = { description, note, amount, createdAt }
-    const response = await expensesRef.add(expense)
+    const response = await firebase
+      .firestore()
+      .collection(`users/${uid}/expenses`)
+      .add(expense)
     return dispatch(addExpense({ id: response.id, ...expense }))
   }
 }
@@ -26,9 +30,14 @@ const removeExpense = (id = '') => ({ type: 'REMOVE_EXPENSE', id })
 // REMOVE_EXPENSE_ASYNC
 
 const removeExpenseAsync = (id = '') => {
-  return async dispacth => {
+  return async (dispacth, getState) => {
+    const uid = getState().logged.uid
     try {
-      const response = await expensesRef.doc(id).delete()
+      await firebase
+        .firestore()
+        .collection(`users/${uid}/expenses`)
+        .doc(id)
+        .delete()
       return dispacth(removeExpense(id))
     } catch (error) {
       console.log('Delete Error', error)
@@ -40,8 +49,13 @@ const removeExpenseAsync = (id = '') => {
 const editExpense = (id, updates) => ({ type: 'EDIT_EXPENSE', id, updates })
 // EDIT_EXPENSE_ASYNC
 const editExpenseAsync = (id, updates) => {
-  return async dispatch => {
-    await expensesRef.doc(id).update(updates)
+  return async (dispatch, getState) => {
+    const uid = getState().logged.uid
+    await firebase
+      .firestore()
+      .collection(`users/${uid}/expenses`)
+      .doc(id)
+      .update(updates)
     return dispatch(editExpense(id, updates))
   }
 }
@@ -51,10 +65,14 @@ const setExpenses = expenses => ({ type: 'SET_EXPENSES', expenses })
 
 // GET_EXPENSES_ASYNC
 const getExpensesAsync = () => {
-  return async dispatch => {
-    const response = await expensesRef.get()
+  return async (dispatch, getState) => {
+    const uid = getState().logged.uid
+    const response = await firebase
+      .firestore()
+      .collection(`users/${uid}/expenses`)
+      .get()
     const expenses = []
-
+    console.log('uid :', uid)
     response.forEach(expense => {
       const {
         description = '',
