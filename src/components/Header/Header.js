@@ -1,12 +1,26 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-const Header = props => (
+import { signOutAsync } from '../../redux/actions/auth'
+import { connect } from 'react-redux'
+export const Header = ({ signOutAsync }) => (
   <header>
     <h1>Expenses</h1>
-    <NavLink to="/" exact={true}>Dashboard</NavLink>
+    <NavLink to="/dashboard" exact={true}>
+      Dashboard
+    </NavLink>
     <NavLink to="/create">Create Expense</NavLink>
     <NavLink to="/help">Help</NavLink>
+    <button onClick={signOutAsync}>Sign Out</button>
   </header>
 )
 
-export { Header }
+const mapDispatchToProps = dispatch => ({
+  signOutAsync: () => {
+    dispatch(signOutAsync())
+  }
+})
+
+export default connect(
+  undefined,
+  mapDispatchToProps
+)(Header)

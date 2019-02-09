@@ -5,7 +5,7 @@ import { addExpenseAsync } from '../../redux/actions/expenses'
 export class AddExpense extends React.Component {
   onSubmit = expense => {
     this.props.addExpenseAsync(expense)
-    this.props.history.push('/')
+    this.props.history.push('/dashboard')
   }
   render() {
     return (

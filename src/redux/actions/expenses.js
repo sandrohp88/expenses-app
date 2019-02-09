@@ -41,10 +41,8 @@ const editExpense = (id, updates) => ({ type: 'EDIT_EXPENSE', id, updates })
 // EDIT_EXPENSE_ASYNC
 const editExpenseAsync = (id, updates) => {
   return async dispatch => {
-    const response = await expensesRef.doc(id).update(updates)
-    if (response) {
-      return dispatch(editExpense(id, updates))
-    }
+    await expensesRef.doc(id).update(updates)
+    return dispatch(editExpense(id, updates))
   }
 }
 
@@ -56,6 +54,7 @@ const getExpensesAsync = () => {
   return async dispatch => {
     const response = await expensesRef.get()
     const expenses = []
+
     response.forEach(expense => {
       const {
         description = '',

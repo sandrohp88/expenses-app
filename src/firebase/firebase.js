@@ -14,30 +14,6 @@ const expensesRef = firebase
   .firestore()
   .collection('users/l6MX8XJ3w9sIffcszPNR/expenses')
 
-// const usersStore = firebase.firestore().collection('users')
-// const user = usersStore.doc('l6MX8XJ3w9sIffcszPNR')
-// expensesRef.add(expenses[0]).then(response => console.log(response.id))
-// const newUser = {
-//   name: 'Sandro',
-//   lastName: 'Herrera Pallares',
-//   email: 'sandrohp88@gmail.com',
-//   pass: 'xxx',
-//   expenses: [expenses[0], expenses[1], expenses[2]]
-// }
-// usersStore.doc('l6MX8XJ3w9sIffcszPNR').update({
-//   expenses: firebase.firestore.FieldValue.arrayUnion({
-//     note: 'newExpense',
-//     createdAt: 100,
-//     description: 'brand new expense'
-//   })
-// })
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
 
-// console.log(user.then(data => console.log(data.data().expenses)))
-// usersStore.add(newUser)
-// usersStore.onSnapshot(
-//   querySnapshot => {
-//     querySnapshot.forEach(user => console.log(user.data()))
-//   }
-// )
-
-export { firebase, expensesRef as default }
+export { googleAuthProvider, firebase, expensesRef as default }

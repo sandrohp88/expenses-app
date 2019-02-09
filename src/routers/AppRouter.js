@@ -4,17 +4,19 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Dashboard } from '../components/Dashboard/Dashboard'
 import AddExpense from '../components/AddExpense/AddExpense'
 import EditExpense from '../components/EditExpense/EditExpense'
-import { Header } from '../components/Header/Header'
 import { Help } from '../components/Help/Help'
 import { NotFound } from '../components/NotFound/NotFound'
+import Login from '../components/Login/Login'
+import PrivateRoute from '../routers/PrivateRoutes'
 const AppRouter = () => (
   <BrowserRouter>
     <div>
-      <Header />
+      {/* <Header /> */}
       <Switch>
-        <Route path="/" component={Dashboard} exact={true} />
-        <Route path="/create" component={AddExpense} />
-        <Route path="/edit/:id" component={EditExpense} />
+        <Route path="/" component={Login} exact={true} />
+        <PrivateRoute path="/dashboard" component={Dashboard} exact={true}/>
+        <PrivateRoute path="/create" component={AddExpense} />
+        <PrivateRoute path="/edit/:id" component={EditExpense} />
         <Route path="/help" component={Help} />
         <Route component={NotFound} />
       </Switch>
