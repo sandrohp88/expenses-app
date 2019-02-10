@@ -1,0 +1,34 @@
+@import '../../goblalStyles/content-container';
+@import '../../goblalStyles/visibility';
+
+.listHeader {
+  background: $off-white;
+  border: 1px solid darken($off-white, 7%);
+  color: $gray;
+  display: flex;
+  justify-content: space-between;
+  padding: $m-size;
+}
+
+.noExpenses {
+  display: flex;
+  border: 1px solid darken($off-white, 7%);
+  border-top: none;
+  color: #666666;
+  padding: $s-size;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  &:hover {
+    background: none;
+  }
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: $desktop-breakpoint) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $m-size;
+    align-items: center;
+  }
+}

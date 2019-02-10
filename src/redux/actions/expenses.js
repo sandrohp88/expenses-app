@@ -40,7 +40,7 @@ const removeExpenseAsync = (id = '') => {
         .delete()
       return dispacth(removeExpense(id))
     } catch (error) {
-      console.log('Delete Error', error)
+      alert('Delete Error', error)
     }
   }
 }
@@ -72,7 +72,6 @@ const getExpensesAsync = () => {
       .collection(`users/${uid}/expenses`)
       .get()
     const expenses = []
-    console.log('uid :', uid)
     response.forEach(expense => {
       const {
         description = '',

@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.module.scss'
 import App from './App/App'
 import { configureStore } from './redux/store/configureStore'
 import { Provider } from 'react-redux'
@@ -8,6 +7,12 @@ import * as serviceWorker from './serviceWorker'
 import { getExpensesAsync } from './redux/actions/expenses'
 import { login, logout } from './redux/actions/auth'
 import firebase from 'firebase'
+import './goblalStyles/goblalStyles.scss'
+import Loading from './components/Loading/Loading'
+
+
+
+
 const store = configureStore()
 
 let hasRendered = false
@@ -18,11 +23,12 @@ const renderApp = () => {
         <App />
       </Provider>,
       document.getElementById('root')
-    )
-    hasRendered = true
+      )
+      hasRendered = true
+    }
   }
-}
-
+  ReactDOM.render(<Loading/>, document.getElementById('root'))
+  
 firebase.auth().onAuthStateChanged(async user => {
   if (user) {
     // User is signed in.
@@ -33,7 +39,6 @@ firebase.auth().onAuthStateChanged(async user => {
     // No user is signed in.
     renderApp()
     store.dispatch(logout())
-    console.log('signed out')
   }
 })
 

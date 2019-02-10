@@ -1,0 +1,46 @@
+@import '../../goblalStyles/content-container';
+
+.listItem {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid darken($off-white, 7%);
+  border-top: none;
+  color: #272525;
+  padding: $s-size;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  &:hover {
+    background: $off-white;
+  }
+  
+  @media (min-width: $desktop-breakpoint) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $m-size;
+    align-items: center;
+  }
+}
+.listItem__body{
+  margin-bottom: $s-size;
+  @media (min-width: $desktop-breakpoint){
+    margin-bottom: $m-size;
+  }
+}
+.listItem__title {
+  margin: 0;
+  word-break: break-all;
+}
+
+.listItem__subtitle {
+  color: $gray;
+  font-size: 1.4rem;
+  font-style: italic;
+
+}
+.listItem__data {
+  margin: $s-size 0 0 0;
+  @media (min-width: $desktop-breakpoint){
+    margin: 0;
+    padding-left: $s-size;
+  }
+}

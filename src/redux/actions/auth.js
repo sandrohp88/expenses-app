@@ -2,8 +2,9 @@ import { firebase, googleAuthProvider } from '../../firebase/firebase'
 
 // SIGN_IN_ASYNC
 const signInAsync = () => {
-  return () => {
-    return firebase.auth().signInWithPopup(googleAuthProvider)
+  return async () => {
+    console.log('hell0')
+    return await firebase.auth().signInWithPopup(googleAuthProvider)
   }
 }
 

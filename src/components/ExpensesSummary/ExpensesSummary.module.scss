@@ -1,3 +1,4 @@
+@import '../../goblalStyles/settings';
 @import '../../goblalStyles/content-container';
 @import '../../goblalStyles/button';
 
@@ -5,7 +6,6 @@
   background: #f7f7f7;
   padding: $l-size 0;
   margin-bottom: $l-size;
-  text-align: center;
 }
 .pageHeader__actions {
   margin-top: $m-size;

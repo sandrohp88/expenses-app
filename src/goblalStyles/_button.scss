@@ -1,0 +1,22 @@
+@import '../../goblalStyles/settings';
+
+.button {
+  background: $blue;
+  display: inline-block;
+  border: none;
+  text-decoration: none;
+  border-radius: 6px;
+  line-height: 1;
+  color: white;
+  font-size: $font-size-large;
+  font-weight: 300;
+  padding: $s-size;
+}
+
+.button__link {
+  background: none;
+}
+.button__secondary {
+  @extend .button;
+  background: #888888;
+}

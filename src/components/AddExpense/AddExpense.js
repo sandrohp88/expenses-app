@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { ExpenseForm } from '../ExpenseForm/ExpenseForm'
 import { addExpenseAsync } from '../../redux/actions/expenses'
+import styles from './AddExpense.module.scss'
 export class AddExpense extends React.Component {
   onSubmit = expense => {
     this.props.addExpenseAsync(expense)
@@ -10,8 +11,14 @@ export class AddExpense extends React.Component {
   render() {
     return (
       <div>
-        <h1>Add expense component</h1>
-        <ExpenseForm onSubmit={this.onSubmit} />
+        <div className={styles.pageHeader}>
+          <div className={styles.contentContainer}>
+            <h1 className={styles.pageHeader__title}>Add Expense</h1>
+          </div>
+        </div>
+        <div className={styles.contentContainer}>
+          <ExpenseForm onSubmit={this.onSubmit} />
+        </div>
       </div>
     )
   }
