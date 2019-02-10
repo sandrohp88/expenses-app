@@ -5,6 +5,8 @@
   flex-direction: column;
   border: 1px solid darken($off-white, 7%);
   border-top: none;
+  // border-radius: 6px;
+
   color: #272525;
   padding: $s-size;
   text-decoration: none;
@@ -12,7 +14,7 @@
   &:hover {
     background: $off-white;
   }
-  
+
   @media (min-width: $desktop-breakpoint) {
     flex-direction: row;
     justify-content: space-between;
@@ -20,9 +22,9 @@
     align-items: center;
   }
 }
-.listItem__body{
+.listItem__body {
   margin-bottom: $s-size;
-  @media (min-width: $desktop-breakpoint){
+  @media (min-width: $desktop-breakpoint) {
     margin-bottom: $m-size;
   }
 }
@@ -35,11 +37,10 @@
   color: $gray;
   font-size: 1.4rem;
   font-style: italic;
-
 }
 .listItem__data {
   margin: $s-size 0 0 0;
-  @media (min-width: $desktop-breakpoint){
+  @media (min-width: $desktop-breakpoint) {
     margin: 0;
     padding-left: $s-size;
   }

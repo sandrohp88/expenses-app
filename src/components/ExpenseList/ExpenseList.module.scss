@@ -4,11 +4,13 @@
 .listHeader {
   background: $off-white;
   border: 1px solid darken($off-white, 7%);
+  // border-radius: 6px;
   color: $gray;
   display: flex;
   justify-content: space-between;
   padding: $m-size;
 }
+
 
 .noExpenses {
   display: flex;
