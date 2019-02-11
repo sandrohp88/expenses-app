@@ -56,7 +56,7 @@ export class ExpensesFilterInput extends Component {
               name="selectFilter"
               id="selecFilter"
               value={this.props.filters.sortBy}
-              onChange={this.onSelectChange}
+              onChange={event => this.onSelectChange(event)}
               className={styles.select}
             >
               <option value="date">Date</option>
@@ -84,8 +84,8 @@ export class ExpensesFilterInput extends Component {
 }
 const maptStateToProps = state => ({ filters: state.filters })
 const mapDispatchToProps = dispacth => ({
-  sortByDate: () => dispacth(sortByDate),
-  sortByAmount: () => dispacth(sortByAmount),
+  sortByDate: () => dispacth(sortByDate()),
+  sortByAmount: () => dispacth(sortByAmount()),
   setEndtDate: date => dispacth(setEndtDate(date)),
   setStartDate: date => dispacth(setStartDate(date)),
   setTextFilter: text => dispacth(setTextFilter(text))

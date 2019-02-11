@@ -34,18 +34,6 @@ export class EditExpense extends React.Component {
     )
   }
 }
-{
-  /* <div>
-  <div className={styles.pageHeader}>
-    <div className={styles.contentContainer}>
-      <h1 className={styles.pageHeader__title}>Add Expense</h1>
-    </div>
-  </div>
-  <div className={styles.contentContainer}>
-    <ExpenseForm onSubmit={this.onSubmit} />
-  </div>
-</div> */
-}
 
 const mapStateToProps = (state, props) => {
   return {
